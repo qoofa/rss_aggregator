@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/minhaj400/rssagg/internal/database"
+	"github.com/qoofa/rssagg/internal/database"
 )
 
 func (apiCfg *apiConfig) handlerCreateFeed(w http.ResponseWriter, r *http.Request, user database.User) {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/minhaj400/rssagg/internal/auth"
-	"github.com/minhaj400/rssagg/internal/database"
+	"github.com/qoofa/rssagg/internal/auth"
+	"github.com/qoofa/rssagg/internal/database"
 )
 
 type authHandler func(http.ResponseWriter, *http.Request, database.User)

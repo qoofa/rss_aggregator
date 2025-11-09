@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/minhaj400/rssagg/internal/database"
+	"github.com/qoofa/rssagg/internal/database"
 )
 
 type User struct {
