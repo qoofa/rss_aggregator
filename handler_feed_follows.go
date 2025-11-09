@@ -22,7 +22,7 @@ func (apiCfg *apiConfig) handlerCreateFeedFollows(w http.ResponseWriter, r *http
 		return
 	}
 
-	_, err = apiCfg.DB.CreateFeedFollow(r.Context(), database.CreateFeedFollowParams{
+	feedFollow, err := apiCfg.DB.CreateFeedFollow(r.Context(), database.CreateFeedFollowParams{
 		ID:        uuid.New(),
 		CreatedAt: time.Now().UTC(),
 		UpdatedAt: time.Now().UTC(),
@@ -35,15 +35,5 @@ func (apiCfg *apiConfig) handlerCreateFeedFollows(w http.ResponseWriter, r *http
 		return
 	}
 
-	// respondWithJSON(w, http.StatusCreated, databaseFeedFollowToFeedFollow(feedFollow))
+	respondWithJSON(w, http.StatusCreated, databaseFeedFollowToFeedFollow(feedFollow))
 }
-
-// func (apiCfg *apiConfig) handlerGetFeeds(w http.ResponseWriter, r *http.Request) {
-// 	feeds, err := apiCfg.DB.GetFeeds(r.Context())
-// 	if err != nil {
-// 		responseWriteError(w, http.StatusInternalServerError, fmt.Sprintf("Error retreving feeds: %v", err))
-// 		return
-// 	}
-
-// 	respondWithJSON(w, http.StatusOK, databaseFeedsToFeeds(feeds))
-// }
