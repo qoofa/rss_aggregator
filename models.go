@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/minhaj400/rssagg/internal/database"
+	"github.com/qoofa/rssagg/internal/database"
 )
 
 type User struct {
@@ -51,4 +51,30 @@ func databaseFeedsToFeeds(f []database.Feed) []Feed {
 		feeds = append(feeds, databaseFeedToFeed(v))
 	}
 	return feeds
+}
+
+type FeedFollow struct {
+	ID        uuid.UUID `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	UserID    uuid.UUID `json:"user_id"`
+	FeedID    uuid.UUID `json:"feed_id"`
+}
+
+func databaseFeedFollowToFeedFollow(f database.FeedFollow) FeedFollow {
+	return FeedFollow{
+		ID:        f.ID,
+		CreatedAt: f.CreatedAt,
+		UpdatedAt: f.UpdatedAt,
+		UserID:    f.UserID,
+		FeedID:    f.FeedID,
+	}
+}
+
+func databaseFeedFollowsToFeedFollows(f []database.FeedFollow) []FeedFollow {
+	d := []FeedFollow{}
+	for _, v := range f {
+		d = append(d, databaseFeedFollowToFeedFollow(v))
+	}
+	return d
 }

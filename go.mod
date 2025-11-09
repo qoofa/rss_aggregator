@@ -1,4 +1,4 @@
-module github.com/minhaj400/rssagg
+module github.com/qoofa/rssagg
 
 go 1.24.5
 
